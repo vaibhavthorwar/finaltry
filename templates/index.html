@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaidya Shweta's Ayurveda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f8f4;
+            color: #2f4f2f;
+        }
+
+        header {
+            background-color: #2f4f2f;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            animation: zoomInText 1s ease-in-out;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo img:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .logo img {
+                width: 100px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 80px;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #48a848;
+            padding: 10px;
+            animation: slideDown 1.5s ease-in-out;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f4f8f4;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #48a848 30%, #2f4f2f 70%);
+            color: white;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            animation: slideUp 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .services {
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(145deg, #f4f8f4, #e0e0e0);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .services h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .services .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeUp 1.5s ease-in-out forwards;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+        }
+
+        .contact {
+            background-color: #2f4f2f;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact form input,
+        .contact form textarea,
+        .contact form button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .contact form textarea {
+            height: 100px;
+        }
+
+        .contact form button {
+            background-color: #48a848;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;   
+        }
+
+        .contact form button:hover {
+            background-color: #3e8e3e;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+
+        footer {
+            background-color: #48a848;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vaidya Shweta's Ayurveda</h1>
+        <p>Heal Inside, Glow Outside!</p>
+        <div class="logo">
+            <img src="logo.jpg" alt="Website Logo">
+        </div>
+    </header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+    <h2>Welcome to Vaidya Shweta's Ayurveda</h2>
+    <p>Experience the natural way to heal and rejuvenate your body and mind.</p>
+</section>
+
+<section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="grid">
+        <div class="service-card">
+            <h3>Ayurvedic Treatments</h3>
+            <p>Experience the ancient wisdom of Ayurveda for holistic healing.</p>
+        </div>
+        <div class="service-card">
+            <h3>Herbal Products</h3>
+            <p>Shop our range of authentic Ayurvedic herbal products for daily wellness.</p>
+        </div>
+        <div class="service-card">
+            <h3>Wellness Consultations</h3>
+            <p>Get personalized wellness advice from Vaidya Shweta based on your unique needs.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form action="/send-email" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+        
+        <p>
+            <a href="https://www.instagram.com/your_instagram_username" target="_blank" style="text-decoration: none; color: inherit;">
+                <i class="fab fa-instagram"></i> Vaidya Shweta's Ayurveda
+            </a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Vaidya Shweta's Ayurveda. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
